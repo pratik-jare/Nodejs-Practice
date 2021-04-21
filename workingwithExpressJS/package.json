@@ -1,0 +1,19 @@
+{
+  "name": "improveddevelopmentworkflowanddebugging",
+  "version": "1.0.0",
+  "description": "complete node.js example wise",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "start-server": "node app.js"
+  },
+  "author": "Pratik Jare",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0"
+  }
+}

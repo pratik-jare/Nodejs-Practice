@@ -1,0 +1,12 @@
+<h1>users</h1>
+<ul>
+    {{#if hasUsers }}
+    <ul>
+        {{#each users }}
+        <li> {{ this.name }} </li>
+        {{/each}}
+    </ul>
+    {{ else }}
+    <h2> No Users Found !</h2>
+    {{/if}}
+</ul>
