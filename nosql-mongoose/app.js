@@ -19,12 +19,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
-  // User.findById('6123961258e63984e44e1152')
-  //   .then(user => {
-  //     req.user = new User(user.name, user.email, user.cart, user._id);
-  //     next();
-  //   })
-  //   .catch(err => console.log(err));
+  User.findById('6123961258e63984e44e1152')
+    .then(user => {
+      req.user = user;
+      next();
+    })
+    .catch(err => console.log(err));
 });
 
 app.use('/admin', adminRoutes);
@@ -32,13 +32,14 @@ app.use(shopRoutes);
 
 app.use(errorController.get404);
 
+
 mongoose
   .connect(
-    'mongodb://localhost:27017/shop?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false'
+    'mongodb://localhost:27017/shop?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false', { useNewUrlParser: true }
   )
   .then(result => {
-    // User.findOne().then(user => {
-      // if (!user) {
+    User.findOne().then(user => {
+      if (!user) {
         const user = new User({
           name: 'Pratik',
           email: 'Pratik@gmail.com',
@@ -47,10 +48,11 @@ mongoose
           }
         });
         user.save();
-      // }
-    // })
+      }
+    });
     app.listen(3000);
   })
   .catch(err => {
     console.log(err);
   });
+
